@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   
-  get 'tweets' => 'tweets#index'
-  get 'tweets/new' => 'tweets#new'
-  post 'tweets' => 'tweets#create'
+  get 'notes' => 'notes#index'
+  get 'notes/new' => 'notes#new'
+  post '/notes' => 'notes#create'
+
+  root  'home#top'
+  get '/about' => 'home#about'
+
 
 
 end

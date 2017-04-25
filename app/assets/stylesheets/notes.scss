@@ -1,0 +1,48 @@
+/* 全体================================ */
+
+
+
+
+/* フォーム================================ */
+input, textarea {
+  border: 1px solid #bbb;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 18px;
+  line-height: 1.428571429;
+  color: #555555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+}
+
+.title-field {
+  width: 480px;
+}
+
+.content-field {
+  height: 90px;
+  width: 480px;
+}
+
+/* 投稿一覧================================ */
+.notes {
+  margin: 0;
+}
+
+.notes li {
+  overflow: auto;
+  padding: 0 0 10px 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.notes .content {
+  display: block;
+}

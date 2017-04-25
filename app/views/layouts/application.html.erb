@@ -10,16 +10,26 @@
 
   <body>
 
-  <header class="navbar">
+<header class="navbar">
   <div class="container">
     <div id="logo">Tweet</div>
     <ul class="header-right">
-      <li>投稿する</li>
-      <li>ユーザ一覧</li>
+      <li><%= link_to "トップ", root_path %></li>
+      <!-- <li><%= link_to "目的", about_path %></li> -->
+      <li><%= link_to "新規投稿", notes_new_path %></li>
     </ul>
   </div>
 </header>
 
     <%= yield %>
+
+    <div class="container">
+  <footer class="footer">
+    <div class="small">
+      &copy; 2017 Yuta Mizogami
+    </div>
+  </footer>
+</div>
+
   </body>
 </html>
