@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def top
-  	@message = "テスト投稿"
+  	@message = "トップページ"
   end
 
   def about

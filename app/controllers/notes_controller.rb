@@ -12,10 +12,18 @@ class NotesController < ApplicationController
 
   	# saveメソッドでデータベースに保存してください
   	@note.save
+
+  	#showアクションへのリダイレクト
+  	redirect_to note_path(@note.id)
+
   end
 
   def index
   	@notes = Note.all
+  end
+
+  def show
+  	@note = Note.find(params[:id])
   end
 
 end

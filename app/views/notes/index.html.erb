@@ -5,7 +5,7 @@
     <li>
       <span class="content">
         <!-- ゲッターを用いてtitleを表示 -->
-        <%= note.title %>
+        <%= link_to note.title, note_path(note.id) %>
       </span>
     </li>
   <% end %>
