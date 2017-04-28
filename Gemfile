@@ -12,6 +12,14 @@ gem 'hirb', '0.7.3'
 #ページネーション
 gem 'kaminari'
 
+#ログイン機能
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+#画像をアップロードできるようにするやつ
+gem 'carrierwave'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'

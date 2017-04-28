@@ -1,14 +1,42 @@
-<p id="notice"><%= notice %></p>
+<aside class="sidebar">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <section>
+    <span class="label">プロフィール画像</span>
+    <h3 class="user-info">
+      <%= image_for(@user) %>
+    </h3>
+  </section>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <section>
+    <span class="label">ユーザー</span>
+    <h3 class="user-info"><%= @user.name %></h3>
+  </section>
+  
+  <section>
+    <span class="label">メールアドレス</span>
+    <h3 class="user-info"><%= @user.email %></h3>
+  </section>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <section>
+    <small><%= link_to 'プロフィールを編集', edit_user_path(@user) %></small>
+  </section>
+
+</aside>
+
+<!-- <p><%=current_user.id%></p> -->
+
+<ul class="notes">
+  <% @notes.each do |note| %>
+    <li>
+      <span class="content">
+        <%= link_to note.title, note_path(note.id) %>
+      </span>
+    </li>
+  <% end %>
+</ul>
+
+
+
+<!-- <%= link_to "編集", edit_user_path(@user.id) %>
+<%= link_to "削除", destroy_user_path(@user.id), method: "delete", "data-confirm" => "本当に削除しますか？" %> -->
+
