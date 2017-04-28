@@ -9,12 +9,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   # 画像アップロード用のインスタンスメソッド
-  def set_image(file)
-    p "aaaaaaaa"
+    def set_image(file)
     if !file.nil?
-    p "bbbbbbbbbbb"
       file_name = file.original_filename
-      p file_name
       File.open("public/user_images/#{file_name}", 'wb'){|f| f.write(file.read)}
       self.image = file_name
     end
