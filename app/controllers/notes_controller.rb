@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   
   #ログインしていないユーザがアクションを起こせないようにする
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
 
   def new
@@ -41,6 +41,9 @@ class NotesController < ApplicationController
   	@note = Note.find(params[:id])
   	@note.title = params[:title]
   	@note.content = params[:content]
+    p "aaaaaaaaaaaaaaaaaaaa"
+    p "#{@note.title}"
+    p "#{@note.content}"
   	@note.save
   	redirect_to note_path(@note.id)
   end

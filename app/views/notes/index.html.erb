@@ -2,12 +2,11 @@
 <ul class="notes">
   <!-- eachメソッドで@notesに入ったものを一つずつ取り出している -->
   <% @notes.each do |note| %>
-    <li>
-      <span class="content">
-        <!-- ゲッターを用いてtitleを表示 -->
-        <%= link_to note.title, note_path(note.id) %>
-      </span>
-    </li>
+   <li>
+    <span class="content">
+      <%= link_to note.title, note_path(note.id) %>
+    </span>
+   </li>
   <% end %>
   
   <%= paginate(@notes) %>

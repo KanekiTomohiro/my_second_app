@@ -1,40 +1,37 @@
 class UsersController < ApplicationController
 
 	#ログインしていないユーザがアクションを起こせないようにする
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 
 	def new
-		@user = User.new
-
 	end
 
-	# def create
-	# 	@user = User.new(user_params)
-	# 	@user.name = params[:name]
- #  		@user.email = params[:email]
-		
- #  		# アップロードされる画像をparams[:user][:image]で受け取ってfileに代入
- #    	file = params[:user][:image]
- #        @user.set_image(file)
+  # def create
+  #   @user = User.new(user_params)
+  #   file = params[:user][:image]
+  #   @user.set_image(file)
 
-	# 	@user.save
-
-	# end
+  #   if @user.save
+  #     redirect_to @user, notice: 'ユーザーが保存されました'
+  #   else
+  #     render :new
+  #   end
+  # end
 
 	def create
     @user = User.new(user_params)
     @user.name = params[:name]
   	@user.email = params[:email]
   	
-    file = params[:user][:image]
-    @user.set_image(file)
+    # file = params[:user][:image]
+    # @user.set_image(file)
 
     @user.save
 
   end
 
 	def index
-		@users = User.all
+		@users = User.all.order(created_at: :desc)
 
 	end
 
@@ -47,28 +44,34 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def update
-	@user = User.find(params[:id])
-    @user.name = params[:name]
-	@user.email = params[:email]
-
-    file = params[:user][:image]
-    @user.set_image(file)
-
-    @user.save
-    redirect_to user_path(@user.id)
- 
-  end
-
 	# def update
-
 	# 	@user = User.find(params[:id])
-
-	# 	@user.name = params[:name]
+ #    	@user.name = params[:name]
 	# 	@user.email = params[:email]
+	# 	p "aaaaaaaaaaaaaaaaaaaa"
+	# 	p "#{@user.name}"
+	# 	p "#{@user.email}"
+
 	# 	@user.save
-	# 	redirect_to user_path(@user.id)
-	# end
+
+	# 	# file = params[:user][:image]
+ # 		# @user.set_image(file)
+
+ #    	redirect_to user_path(@user.id)
+ #  end
+
+	def update
+		@user = User.find(params[:id])
+		p "aaaaaaaaaaaaaaaaaaaa"
+		p "#{@user}"
+		@user.name = params[:name]
+		@user.email = params[:email]
+	 	p "bbbbbbbbbbbbb"
+		p "#{@user.name}"
+		p "#{@user.email}"
+		@user.save
+		redirect_to user_path(@user.id)
+	end
 
 	def destroy
 		@user = User.find(params[:id])
