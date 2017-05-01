@@ -8,18 +8,30 @@ class UsersController < ApplicationController
 
 	end
 
-	def create
-		@user = User.new(user_params)
+	# def create
+	# 	@user = User.new(user_params)
+	# 	@user.name = params[:name]
+ #  		@user.email = params[:email]
 		
-  		# アップロードされる画像をparams[:user][:image]で受け取ってfileに代入
-    	file = params[:image]
-        @user.set_image(file)
+ #  		# アップロードされる画像をparams[:user][:image]で受け取ってfileに代入
+ #    	file = params[:user][:image]
+ #        @user.set_image(file)
 
-        @user.name = params[:name]
-  		@user.email = params[:email]
-		@user.save
+	# 	@user.save
 
-	end
+	# end
+
+	def create
+    @user = User.new(user_params)
+    @user.name = params[:name]
+  	@user.email = params[:email]
+  	
+    file = params[:user][:image]
+    @user.set_image(file)
+
+    @user.save
+
+  end
 
 	def index
 		@users = User.all
@@ -36,14 +48,27 @@ class UsersController < ApplicationController
 	end
 
 	def update
+	@user = User.find(params[:id])
+    @user.name = params[:name]
+	@user.email = params[:email]
 
-		@user = User.find(params[:id])
+    file = params[:user][:image]
+    @user.set_image(file)
 
-		@user.name = params[:name]
-		@user.email = params[:email]
-		@user.save
-		redirect_to user_path(@user.id)
-	end
+    @user.save
+    redirect_to user_path(@user.id)
+ 
+  end
+
+	# def update
+
+	# 	@user = User.find(params[:id])
+
+	# 	@user.name = params[:name]
+	# 	@user.email = params[:email]
+	# 	@user.save
+	# 	redirect_to user_path(@user.id)
+	# end
 
 	def destroy
 		@user = User.find(params[:id])

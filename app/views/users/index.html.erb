@@ -6,9 +6,9 @@
     <li>
       <span class="content">
         <!-- ゲッターを用いてnameを表示 -->
-        <%= image_tag 'sample.png', class: "profile_img" %>
-        <%= link_to user.name, user_path(user.id) %>
-        <%= user.email %>
+      <%= image_for(user) %>
+      <%= link_to user.name, user %> |
+      <%= user.email %>
       </span>
     </li>
   <% end %>
