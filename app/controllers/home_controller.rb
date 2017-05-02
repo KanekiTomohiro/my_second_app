@@ -1,7 +1,15 @@
 class HomeController < ApplicationController
 
   def top
-  	@message = "トップページ"
+    if user_signed_in?
+      # 変数@noteにNoteクラスのインスタンスを代入
+      @note = Note.new
+      # 変数@notesにNoteクラスのインスタンスの配列を降順で代入してください
+      @notes = Note.all.order(created_at: :desc)
+    else
+      @message = "ようこそmyappへ！"
+    end
+    
   end
 
   def about

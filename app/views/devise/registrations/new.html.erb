@@ -4,6 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <!--f.labelは<label>タグを生成しますが、覚える必要はありません。-->
     <%= f.label '名前' %><br />
     <%= f.text_field :name, autofocus: true, class: "form-control" %>
   </div>
@@ -19,11 +20,6 @@
     (<%= @minimum_password_length %> 文字以上)
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'プロフィール画像' %>
-    <%= f.file_field :image, class: "form-control image-field" %>
   </div>
 
   <div class="actions">

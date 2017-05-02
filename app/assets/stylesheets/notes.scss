@@ -1,54 +1,67 @@
-/* 全体================================ */
 
-
-
-
-/* フォーム================================ */
-input, textarea {
-  border: 1px solid #bbb;
-  margin-bottom: 15px;
-  border-radius: 3px;
-}
-
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 6px 12px;
-  font-size: 18px;
-  line-height: 1.428571429;
-  color: #555555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-}
-
-.field{
-  width: 480px;
-}
-
-.title-field {
-  width: 480px;
-}
-
-.content-field {
-  height: 90px;
-  width: 480px;
-}
-
-/* 投稿一覧================================ */
+/* 投稿一覧 ================================ */
 .notes {
   margin: 0;
+  float: left;
+  width: 50%;
 }
-
+.notes h2 {
+  margin-top: 0;
+}
 .notes li {
   overflow: auto;
-  padding: 0 0 10px 0;
-  border-top: 1px solid #e8e8e8;
+  padding: 14px 0;
   border-bottom: 1px solid #eaeaea;
 }
 
-.notes .content {
+/* 投稿 ================================ */
+.notes .title, .notes .content {
   display: block;
 }
 
+.notes .title {
+  padding-top: 8px;
+}
 
+.notes img {
+  display: inline-block;
+  margin-right: 6%;
+  float: left;
+  width:65px;
+  height:65px;
+}
+
+.show-note li {
+  padding: 30px 40px;
+  background-color: #DEE6EA;
+  border-radius: 5px;
+}
+
+.show-note .title, .show-note .content {
+  display: block;
+}
+
+.show-note .title {
+  padding-top: 8px;
+}
+.show-note img {
+  display: inline-block;
+  margin-right: 5px;
+  float: left;
+  width:70px;
+  height:70px;
+  margin-right: 6%;
+}
+
+/* 投稿フォーム ================================ */
+
+.user-id-field {
+  width: 100%;
+}
+.title-field{
+  width: 97.2%;
+}
+.content-field {
+  height: 90px;
+  width: 97.2%;
+}

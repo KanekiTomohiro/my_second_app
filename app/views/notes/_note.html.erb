@@ -1,0 +1,12 @@
+<li>
+  <!-- ユーザの画像 -->
+  <%= image_for(note.user) %>
+  <!-- ユーザの名前 -->
+  <span class="user-name">
+    <%= note.user.name %>
+  </span>
+  <!-- ユーザの投稿内容 -->
+  <span class="content">
+    <%= link_to note.title, note_path(note.id) %>
+  </span>
+</li>

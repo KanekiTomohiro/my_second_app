@@ -1,28 +1,6 @@
-/* ユーザー共通 ================================ */
-.profile_img {
-  width: 52px;
-  height: 52px;
-}
-
-/* ユーザーのshowページ ================================ */
-.sidebar { 
-  width: 34%;
-  float: left;
-  margin-bottom: 30px;
-}
-
-.label {
-  color: #C0C0C2;
-}
-
-.user-info {
-  margin: 10px 0 30px 0;
-}
-
-.user-info .profile_img {
-  width: 140px;
-  height: 140px;
-}
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* 新規ユーザー作成フォーム ================================ */
 .name-field, .email-field {
@@ -54,10 +32,38 @@
   padding: 5px 0;
   margin-right: 2%;
   float: left;
-  width: 56px;
+  
 }
 
 .user-list a {
   display: inline-block;
-  margin-top: 22px;
+  margin-top: 30px;
+}
+
+
+/* ユーザーのshowページ ================================ */
+.sidebar { 
+  width: 34%;
+  float: left;
+  margin-bottom: 30px;
+  margin-right: 10%;
+}
+
+.label {
+  color: #C0C0C2;
+}
+
+.user-info {
+  margin: 10px 0 30px 0;
+}
+
+.user-info .profile_img {
+  width: 140px;
+  height: 140px;
+}
+
+/* ユーザー共通 ================================ */
+.profile_img {
+  width: 65px;
+  height: 65px;
 }

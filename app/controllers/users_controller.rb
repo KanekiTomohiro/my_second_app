@@ -1,14 +1,41 @@
 class UsersController < ApplicationController
 
-	#ログインしていないユーザがアクションを起こせないようにする
-	# before_action :authenticate_user!
+  #ユーザがログインしているかどうか
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-	def new
-	end
 
+
+  def index
+    @users = User.all
+  end
+
+  def show
+    # @userのidをuser_idとしてもつnoteを@notesに代入
+    # @userはbefore_actionで定義済み
+
+    # @notes = Note.where(user_id: @user.id)
+    #has_manyで定義したから使える
+
+    @notes = @user.notes
+
+  end
+
+  #deviseのフォームがあるためいらない
+  # def new
+  #   @user = User.new
+  # end
+
+  def edit
+  end
+
+  #deviseのフォームがあるためいらない
   # def create
   #   @user = User.new(user_params)
+  #   # アップロードされる画像をparams[:user][:image]で受け取る
   #   file = params[:user][:image]
+
   #   @user.set_image(file)
 
   #   if @user.save
@@ -18,71 +45,38 @@ class UsersController < ApplicationController
   #   end
   # end
 
-	def create
-    @user = User.new(user_params)
-    @user.name = params[:name]
-  	@user.email = params[:email]
-  	
-    # file = params[:user][:image]
-    # @user.set_image(file)
+  def update
+    file = params[:user][:image]
+    @user.set_image(file)
 
-    @user.save
-
+    if @user.update(user_params)
+      redirect_to @user, notice: 'ユーザー情報が更新されました'
+    else
+      render :edit
+    end
   end
 
-	def index
-		@users = User.all.order(created_at: :desc)
+  def destroy
+    @user.destroy
+    redirect_to users_url, notice: 'ユーザーが削除されました'
+  end
 
-	end
+  private
 
-	def show
-		@user = User.find(params[:id])
-		@notes = Note.where(user_id: @user.id)
-	end
-
-	def edit
-		@user = User.find(params[:id])
-	end
-
-	# def update
-	# 	@user = User.find(params[:id])
- #    	@user.name = params[:name]
-	# 	@user.email = params[:email]
-	# 	p "aaaaaaaaaaaaaaaaaaaa"
-	# 	p "#{@user.name}"
-	# 	p "#{@user.email}"
-
-	# 	@user.save
-
-	# 	# file = params[:user][:image]
- # 		# @user.set_image(file)
-
- #    	redirect_to user_path(@user.id)
- #  end
-
-	def update
-		@user = User.find(params[:id])
-		p "aaaaaaaaaaaaaaaaaaaa"
-		p "#{@user}"
-		@user.name = params[:name]
-		@user.email = params[:email]
-	 	p "bbbbbbbbbbbbb"
-		p "#{@user.name}"
-		p "#{@user.email}"
-		@user.save
-		redirect_to user_path(@user.id)
-	end
-
-	def destroy
-		@user = User.find(params[:id])
-		@user.destroy
-		redirect_to users_path
-	end
-
-	private
-
-	def user_params
-      params.permit(:user).permit(:name, :email, :image)
+    def set_user
+      @user = User.find(params[:id])
     end
 
+    def user_params
+      params.require(:user).permit(:name, :email)
+    end
+
+    def correct_user
+      user = User.find(params[:id])
+      # if文をcurrent_user?ヘルパーを用いて書き換えてください
+      if !current_user?(user)
+        redirect_to root_path, alert: '許可されていないページです'
+      end
+    end
+    
 end

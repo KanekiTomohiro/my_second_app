@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MySecondApp</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>myapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <header class="navbar">
+    <div class="container">
+      <div id="logo"><%= link_to "myapp", root_path %></div>
+      <% if user_signed_in? %>
+        <ul class="header-right">
 
-  <body>
+          <li><%= link_to "投稿一覧", notes_path %></li>
+          <li><%= link_to "ユーザ一覧", users_path %></li>
+          <li><%= link_to current_user.name + "さん", current_user %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      <% else %>
+        <ul class="header-right">
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        </ul>
+      <% end %>
+    </div>
+  </header>
 
-<header class="navbar">
   <div class="container">
-    <div id="logo">Tweet</div>
-    <ul class="header-right">
-     <% if user_signed_in? %>
-      <li><%= link_to "新規投稿", notes_new_path %></li>
-      <li><%= link_to "投稿一覧", notes_path %></li> 
-      <li><%= link_to "ユーザ一覧", users_path %></li>
-      <li><%= current_user.name %></li>
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-     <% else %>
-      <li><%= link_to "トップ", root_path %></li>
-      <li><%= link_to "ユーザ登録", new_user_registration_path %></li>
-      <li><%= link_to "ログイン", new_user_session_path %></li>
-     <% end %>
-  
-      <!-- <li><%= link_to "目的", about_path %></li> -->
-      
-    </ul>
-  </div>
-</header>
-
-
     <p class="alert alert-success"><%= notice %></p>
     <p class="alert alert-danger"><%= alert %></p>
 
     <%= yield %>
 
-    <div class="container">
-  <footer class="footer">
-    <div class="small">
-      &copy; 2017 Yuta Mizogami
-    </div>
-  </footer>
-</div>
+  </div>
 
-  </body>
+  <div class="container">
+
+    <footer class="footer">
+      <div class="small">
+        &copy; 2017 Yuta Mizogami
+      </div>
+    </footer>
+  </div>
+</body>
 </html>
